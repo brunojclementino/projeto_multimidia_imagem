@@ -11,16 +11,20 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class ImagemTela  extends JPanel {  
-	    BufferedImage img1, img2;  
+	   
+	private static final long serialVersionUID = 1L;
+	
+		BufferedImage img1;  
 	  
 	    public ImagemTela(String url) {  
-	        Dimension d = new Dimension(300, 300);  
+	        Dimension d = new Dimension(500, 500);  
 	        setPreferredSize(d);  
 	        setMaximumSize(d);  
 	        setMinimumSize(d);  
 	        setSize(d);  
 	        try {  
 	            img1 = ImageIO.read(new File(url));  
+	            img1.setRGB(300, 300, 0);
 	        } catch (IOException e) {  
 	            e.printStackTrace();  
 	        }  
