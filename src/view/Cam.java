@@ -28,6 +28,7 @@ public class Cam {
 		Highgui.imwrite("foto1.jpg", frame);
 		
 		Mat frameBlur = new Mat();
+		
 		videoCapture.retrieve(frameBlur);
 		Highgui.imwrite("foto2.jpg", frameBlur);
 		
