@@ -1,5 +1,7 @@
 package view.video;
 
+import java.io.File;
+
 import javax.swing.JOptionPane;
 
 import org.opencv.core.Mat;
@@ -33,21 +35,20 @@ public class AbriVideo {
 					e.printStackTrace();
 				}
 				System.out.println("ok");
-
 			}
 		}
 	}
 
 	public void concatenar() {
 		Mat frame = new Mat();
-		VideoCapture videoCap = new VideoCapture();
+		VideoCapture videoCap = new VideoCapture("video/");
 		videoCap.retrieve(frame);
 		Highgui.imwrite("video/", frame);
+		
 		
 	}
 
 	public static void main(String[] args) {
 		new AbriVideo();
 	}
-
 }
