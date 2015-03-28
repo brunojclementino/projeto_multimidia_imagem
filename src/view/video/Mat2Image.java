@@ -21,7 +21,7 @@ public class Mat2Image {
 		this.mat = mat;
 		int w = mat.cols(), h = mat.rows();
 		if (dat == null || dat.length != w * h * 3) {
-			dat = new byte[w * h * 128];
+			dat = new byte[w * h * 3];			
 		}
 		if (img == null || img.getWidth() != w || img.getHeight() != h
 				|| img.getType() != BufferedImage.TYPE_3BYTE_BGR) {

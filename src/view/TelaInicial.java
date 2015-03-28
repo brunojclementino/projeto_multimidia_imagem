@@ -26,9 +26,7 @@ import javax.swing.ImageIcon;
  */
 public class TelaInicial extends JFrame {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -2090424541468295528L;
 	private JPanel contentPane;
 	JComboBox<String> comboBox_01 = new JComboBox<String>();
