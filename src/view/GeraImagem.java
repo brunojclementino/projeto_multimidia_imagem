@@ -1,7 +1,6 @@
 package view;
 
 import org.opencv.core.Mat;
-import org.opencv.core.Size;
 import org.opencv.highgui.Highgui;
 
 public class GeraImagem {
