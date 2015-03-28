@@ -1,4 +1,4 @@
-package view;
+package view.imagem;
 
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;

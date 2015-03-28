@@ -1,5 +1,7 @@
 package view.video;
 
+import javax.swing.JOptionPane;
+
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
@@ -7,29 +9,40 @@ import org.opencv.highgui.VideoCapture;
 public class AbriVideo {
 
 	public AbriVideo() {
+		// Define a biblioteca
 		System.loadLibrary("opencv_java2410");
+		// Define que será usado a webcam ZERO
 		VideoCapture videoCap = new VideoCapture(0);
-		if (!videoCap.isOpened()) {
-			System.out.println("Não conectou sua câmera");
-		} else {
-			System.out.println("WebCam funciona " + videoCap.toString());
 
-		}
-		Mat frame;
-		
-		for (int i = 0; i < 30; i++) {			
-			try {
-				frame = new Mat();
-				videoCap.retrieve(frame);
-				Highgui.imwrite("video/" + "foto" + i + ".jpg", frame);
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		// Verifica se a webcam está conectada ...
+		if (!videoCap.isOpened()) {
+			JOptionPane.showMessageDialog(null, "Não conectou sua câmera");
+		} else {
+
+			Mat frame;
+			// Com um laço de 30, será criada 30 quadros.
+			for (int i = 0; i < 60; i++) {
+				try {
+					frame = new Mat();
+					videoCap.retrieve(frame);
+					// Nomeia os 30 quadros de fotoX.jpg
+					Highgui.imwrite("video/" + "foto" + i + ".jpg", frame);
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println("ok");
+
 			}
-			System.out.println("ok");
-			
 		}
+	}
+
+	public void concatenar() {
+		Mat frame = new Mat();
+		VideoCapture videoCap = new VideoCapture();
+		videoCap.retrieve(frame);
+		Highgui.imwrite("video/", frame);
 		
 	}
 

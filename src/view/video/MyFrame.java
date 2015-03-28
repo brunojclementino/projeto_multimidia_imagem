@@ -49,7 +49,7 @@ public class MyFrame extends JFrame {
     class MyThread extends Thread{
         @Override
         public void run() {
-            for (;;){
+            while (true){
                 repaint();
                 try { 
                 	Thread.sleep(10);
