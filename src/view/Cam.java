@@ -1,10 +1,8 @@
 package view;
 
 import org.opencv.core.Mat;
-import org.opencv.core.Size;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
-import org.opencv.imgproc.Imgproc;
 
 public class Cam {
 	
