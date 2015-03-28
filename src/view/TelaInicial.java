@@ -18,12 +18,16 @@ import javax.swing.ImageIcon;
 
 public class TelaInicial extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2090424541468295528L;
 	private static final String JComboBox = null;
 	private JPanel contentPane;
 	JComboBox comboBox_01 = new JComboBox();
 	JComboBox comboBox_02 = new JComboBox();
-	JLabel panel_projecao01 = new JLabel();
-	JLabel panel_projecao02 = new JLabel();
+	JLabel label_projecao01 = new JLabel();
+	JLabel label_projecao02 = new JLabel();
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -38,7 +42,6 @@ public class TelaInicial extends JFrame {
 		});
 	}
 
-	
 	public TelaInicial() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,12 +67,10 @@ public class TelaInicial extends JFrame {
 		mnFotos.add(mntmTirarFotos);
 
 		JMenuItem mntmAtualizar = new JMenuItem("Atualizar ");
+
 		mntmAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ImagemTela tela = new ImagemTela("fotos02\\foto2.jpg");
-				
-				panel_projecao02.add(tela);
-				
+				atualizaFotos();
 			}
 		});
 		mntmAtualizar.setIcon(new ImageIcon(TelaInicial.class
@@ -80,10 +81,19 @@ public class TelaInicial extends JFrame {
 				"Subtra\u00E7\u00E3o de fotos");
 		mntmSubtraoDeFotos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new GeraImagem("\fotos01\\foto01.jpg", "\fotos02\\foto02.jpg");
+				Thread thread = new Thread() {
+					public void run() {
+
+						new GeraImagem("\fotos01\\foto01.jpg",
+								"\fotos02\\foto02.jpg");
+
+					}
+				};
+				thread.start();
 			}
 		});
 		mnFotos.add(mntmSubtraoDeFotos);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -100,9 +110,9 @@ public class TelaInicial extends JFrame {
 		panel_foto01.add(comboBox_01);
 		listaConteudo("fotos01", comboBox_01);
 
-		panel_projecao01.setBackground(Color.GRAY);
-		panel_projecao01.setBounds(10, 53, 300, 300);
-		panel_foto01.add(panel_projecao01);
+		label_projecao01.setBackground(Color.GRAY);
+		label_projecao01.setBounds(10, 53, 300, 300);
+		panel_foto01.add(label_projecao01);
 
 		// Panel que apresenta as fotos;
 		JPanel panel_foto02 = new JPanel();
@@ -115,30 +125,40 @@ public class TelaInicial extends JFrame {
 
 		listaConteudo("fotos02", comboBox_02);
 
-		panel_projecao02.setBackground(Color.GRAY);
-		panel_projecao02.setBounds(10, 53, 300, 300);
-		panel_foto02.add(panel_projecao02);
+		label_projecao02.setBackground(Color.GRAY);
+		label_projecao02.setBounds(10, 53, 300, 300);
+		panel_foto02.add(label_projecao02);
 
 		comboBox_01.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				atualizaFotos();
 				ImagemTela tela = new ImagemTela("fotos01\\foto1.jpg");
-				panel_projecao01.add(tela);
-				panel_projecao01.repaint();
+				label_projecao01.add(tela);
+				label_projecao01.repaint();
 			}
 		});
 
 		comboBox_02.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				atualizaFotos();
 				ImagemTela tela = new ImagemTela("fotos02\\foto2.jpg");
-				panel_projecao02.add(tela);
-				panel_projecao02.repaint();
+				label_projecao02.add(tela);
+				label_projecao02.repaint();
 			}
 		});
+	}
+
+	public void atualizaFotos() {
+		listaConteudo("fotos01/foto01", comboBox_01);
+		listaConteudo("fotos02/foto02", comboBox_02);
+		label_projecao01.repaint();
+		label_projecao02.validate();
 	}
 
 	public void listaConteudo(String nomePasta, JComboBox box) {
 
 		File arquivo = new File(nomePasta);
+		
 		File[] file = arquivo.listFiles();
 
 		if (file != null) {

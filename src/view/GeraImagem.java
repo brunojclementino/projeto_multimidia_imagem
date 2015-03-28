@@ -1,12 +1,14 @@
 package view;
 
+import java.io.File;
+
 import javax.swing.JOptionPane;
 
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 
 public class GeraImagem {
-	
+
 	public GeraImagem(String caminhoImg1, String caminhoImg2) {
 
 		System.loadLibrary("opencv_java2410");
@@ -16,7 +18,7 @@ public class GeraImagem {
 
 		Mat frame2 = new Mat();
 		frame2 = Highgui.imread(caminhoImg2);
-		
+
 		double[] t1 = new double[3];
 		double[] t2 = new double[3];
 		double[] t3 = new double[3];
@@ -42,13 +44,14 @@ public class GeraImagem {
 				// System.out.println(t3[0]+"    "+t3[1]+"   "+t3[2]);
 			}
 		}
-
+		
 		Highgui.imwrite("foto3.jpg", frame3);
-		JOptionPane.showMessageDialog(null, "Imagem gerada com sucesso!");
+		
+		File file = new File("foto3.jpg");
+		if (file.length() != 0) {
+			JOptionPane.showMessageDialog(null, "Imagem gerada com sucesso!");	
+		} else {
+			JOptionPane.showMessageDialog(null, "Houve algum erro, tente mais tarde.");
+		}
 	}
-
-//	public static void main(String[] args) {
-//		new GeraImagem("fotos01\\foto1.jpg", "fotos02\\foto2.jpg");
-//	}
-
 }
