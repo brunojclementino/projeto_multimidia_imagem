@@ -15,17 +15,24 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.ImageIcon;
-
+/**
+ * Classe que cria a interface para usuário. Nela apresenta um menu com três opções: Tirar foto, atualizar e subtrair as fotos.
+ * 
+ * @see GeraImagem
+ * @see Cam
+ * 
+ * @author Bruno Clementino, Fábio Dias e Lucas Miranda
+ *
+ */
 public class TelaInicial extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2090424541468295528L;
-	private static final String JComboBox = null;
 	private JPanel contentPane;
-	JComboBox comboBox_01 = new JComboBox();
-	JComboBox comboBox_02 = new JComboBox();
+	JComboBox<String> comboBox_01 = new JComboBox<String>();
+	JComboBox<String> comboBox_02 = new JComboBox<String>();
 	JLabel label_projecao01 = new JLabel();
 	JLabel label_projecao02 = new JLabel();
 
@@ -70,6 +77,7 @@ public class TelaInicial extends JFrame {
 
 		mntmAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				validate();
 				atualizaFotos();
 			}
 		});
@@ -84,8 +92,8 @@ public class TelaInicial extends JFrame {
 				Thread thread = new Thread() {
 					public void run() {
 
-						new GeraImagem("\fotos01\\foto01.jpg",
-								"\fotos02\\foto02.jpg");
+						GeraImagem gi = new GeraImagem();
+						gi.gerar("fotos01\\foto1.jpg", "fotos02\\foto2.jpg");
 
 					}
 				};
@@ -149,13 +157,13 @@ public class TelaInicial extends JFrame {
 	}
 
 	public void atualizaFotos() {
-		listaConteudo("fotos01/foto01", comboBox_01);
-		listaConteudo("fotos02/foto02", comboBox_02);
+		listaConteudo("fotos01/foto1", comboBox_01);
+		listaConteudo("fotos02/foto2", comboBox_02);
 		label_projecao01.repaint();
 		label_projecao02.validate();
 	}
 
-	public void listaConteudo(String nomePasta, JComboBox box) {
+	public void listaConteudo(String nomePasta, JComboBox<String> box) {
 
 		File arquivo = new File(nomePasta);
 		

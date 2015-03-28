@@ -1,16 +1,24 @@
 package view;
 
+import java.awt.HeadlessException;
 import java.io.File;
 
 import javax.swing.JOptionPane;
 
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
-
+/**
+ * Essa classe faz a subtração dos valores do RGB das imagens e cria outra imagem com o valor da subrtração dos mesmos.
+ * 
+ * @see TelaInicial
+ * @see ImagemTela
+ * 
+ * @author Bruno Clementino, Fábio Dias e Lucas Miranda
+ *
+ */
 public class GeraImagem {
 
-	public GeraImagem(String caminhoImg1, String caminhoImg2) {
-
+	public void gerar(String caminhoImg1, String caminhoImg2) throws HeadlessException {
 		System.loadLibrary("opencv_java2410");
 
 		Mat frame1 = new Mat();

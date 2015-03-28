@@ -6,7 +6,7 @@ import org.opencv.highgui.VideoCapture;
 
 public class Cam {
 	
-	public static void tiraFoto() {
+	public void tiraFoto() {
 		System.out.println("Olá, OpenCV");
 		
 		System.loadLibrary("opencv_java2410");
