@@ -11,6 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
+import javax.swing.ImageIcon;
 
 public class TelaInicial extends JFrame {
 
@@ -18,7 +22,9 @@ public class TelaInicial extends JFrame {
 	private JPanel contentPane;
 	JComboBox comboBox_01 = new JComboBox();
 	JComboBox comboBox_02 = new JComboBox();
-
+	JLabel panel_projecao01 = new JLabel();
+	JLabel panel_projecao02 = new JLabel();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -42,6 +48,38 @@ public class TelaInicial extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1007, 454);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnFotos = new JMenu("Fotos");
+		menuBar.add(mnFotos);
+		
+		JMenuItem mntmTirarFotos = new JMenuItem("Tirar fotos");
+		mntmTirarFotos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Cam camera = new Cam();
+				camera.tiraFoto();
+				comboBox_01.repaint();
+				comboBox_02.repaint();
+			}
+		});
+		mntmTirarFotos.setIcon(new ImageIcon(TelaInicial.class.getResource("/lib/Camera_icon.jpg")));
+		mnFotos.add(mntmTirarFotos);
+		
+		JMenuItem mntmAtualizar = new JMenuItem("Atualizar ");
+		mntmAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				ImagemTela tela = new ImagemTela("fotos02\\foto2.jpg");
+				panel_projecao02.add(tela);
+				panel_projecao02.repaint();
+				
+				panel_projecao01.repaint();
+			}
+		});
+		mntmAtualizar.setIcon(new ImageIcon(TelaInicial.class.getResource("/lib/atualizar.jpg")));
+		mnFotos.add(mntmAtualizar);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -58,8 +96,6 @@ public class TelaInicial extends JFrame {
 		panel_foto01.add(comboBox_01);
 		listaConteudo("fotos01", comboBox_01);
 		
-		JLabel panel_projecao01 = new JLabel();
-		
 		panel_projecao01.setBackground(Color.GRAY);
 		panel_projecao01.setBounds(10, 53, 300, 300);
 		panel_foto01.add(panel_projecao01);
@@ -75,7 +111,7 @@ public class TelaInicial extends JFrame {
 		
 		listaConteudo("fotos02", comboBox_02);
 		
-		JLabel panel_projecao02 = new JLabel();
+		
 		panel_projecao02.setBackground(Color.GRAY);
 		panel_projecao02.setBounds(10, 53, 300, 300);
 		panel_foto02.add(panel_projecao02);

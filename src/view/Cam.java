@@ -6,7 +6,7 @@ import org.opencv.highgui.VideoCapture;
 
 public class Cam {
 	
-	public static void main(String[] args) {
+	public static void tiraFoto() {
 		System.out.println("Olá, OpenCV");
 		
 		System.loadLibrary("opencv_java2410");
@@ -23,21 +23,14 @@ public class Cam {
 		Mat frame = new Mat();
 		videoCapture.retrieve(frame);
 		
-		Highgui.imwrite("fotos01/foto1.jpg", frame);
+		Highgui.imwrite("fotos01/"+"foto1.jpg", frame);
 		
 		Mat frameBlur = new Mat();
 		
 		videoCapture.retrieve(frameBlur);
-		Highgui.imwrite("fotos02/foto2.jpg", frameBlur);
+		Highgui.imwrite("fotos02/"+"foto2.jpg", frameBlur);
 		
-		/*Imgproc.blur(frame, frameBlur, new Size(5,5));
-		Highgui.imwrite("foto2.jpg", frameBlur);
-		
-		Imgproc.GaussianBlur(frame, frameBlur, new Size(25,25), 20);
-		Highgui.imwrite("me3.jpg", frameBlur);*/
 		videoCapture.release();
-		
-		
 	}
 
 }
