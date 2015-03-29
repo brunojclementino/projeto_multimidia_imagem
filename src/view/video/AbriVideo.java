@@ -1,7 +1,10 @@
 package view.video;
 
-import java.io.File;
+import java.awt.image.BufferedImage;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import org.opencv.core.Mat;
@@ -23,7 +26,7 @@ public class AbriVideo {
 
 			Mat frame;
 			// Com um laço de 30, será criada 30 quadros.
-			for (int i = 0; i < 60; i++) {
+			for (int i = 0; i < 10; i++) {
 				try {
 					frame = new Mat();
 					videoCap.retrieve(frame);
@@ -37,15 +40,18 @@ public class AbriVideo {
 				System.out.println("ok");
 			}
 		}
+		
+		concatenar();
 	}
+	
+	
 
 	public void concatenar() {
 		Mat frame = new Mat();
-		VideoCapture videoCap = new VideoCapture("video/");
-		videoCap.retrieve(frame);
-		Highgui.imwrite("video/", frame);
+		VideoCapture videoCap = new VideoCapture();
 		
-		
+		videoCap.open("video/foto0.jpg,video/foto1.jpg,video/foto2.jpg,video/foto3.jpg,video/foto4.jpg,video/foto5.jpg");
+		System.out.println(videoCap.set(5, 32));
 	}
 
 	public static void main(String[] args) {
