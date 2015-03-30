@@ -35,7 +35,7 @@ public class TelaInicial extends JFrame {
 	JLabel label_projecao02 = new JLabel();
 
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+		/*EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					TelaInicial frame = new TelaInicial();
@@ -44,7 +44,7 @@ public class TelaInicial extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
 	}
 
 	public TelaInicial() {

@@ -11,7 +11,7 @@ public class Cam {
 		
 		System.loadLibrary("opencv_java2410");
 		
-		VideoCapture videoCapture = new VideoCapture(0);
+		VideoCapture videoCapture = new VideoCapture(1);
 		
 		if(!videoCapture.isOpened()){
 			System.out.println("Não conectou sua câmera");
@@ -21,16 +21,27 @@ public class Cam {
 			
 		}
 		Mat frame = new Mat();
+		int cont=0;
+		while(true){
+			if(cont>1000)
+				break;
+			cont++;
+		}
 		videoCapture.retrieve(frame);
 		
-		Highgui.imwrite("fotos01/"+"foto1.jpg", frame);
+		Highgui.imwrite("tratamentoDeImagens/"+"foto1.jpg", frame);
 		
 		Mat frameBlur = new Mat();
 		
 		videoCapture.retrieve(frameBlur);
-		Highgui.imwrite("fotos02/"+"foto2.jpg", frameBlur);
+		Highgui.imwrite("tratamentoDeImagens/"+"foto2.jpg", frameBlur);
 		
 		videoCapture.release();
+	}
+	
+	public static void main(String[] args) {
+		new Cam().tiraFoto();
+		new GeraImagem().gerar("tratamentoDeImagens/foto1.jpg", "tratamentoDeImagens/foto2.jpg");
 	}
 
 }
