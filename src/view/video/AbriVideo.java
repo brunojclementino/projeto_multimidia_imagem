@@ -1,15 +1,15 @@
 package view.video;
 
-import java.awt.image.BufferedImage;
+import java.io.File;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
+
+import view.processamento_de_video.AnalisaNovosFrames;
+import view.processamento_de_video.GerarNovosFrames;
 
 public class AbriVideo {
 
@@ -17,7 +17,7 @@ public class AbriVideo {
 		// Define a biblioteca
 		System.loadLibrary("opencv_java2410");
 		// Define que será usado a webcam ZERO
-		VideoCapture videoCap = new VideoCapture(0);
+		VideoCapture videoCap = new VideoCapture(1);
 
 		// Verifica se a webcam está conectada ...
 		if (!videoCap.isOpened()) {
@@ -25,36 +25,71 @@ public class AbriVideo {
 		} else {
 
 			Mat frame;
+			frame = new Mat();
+			//Essa sequência de retrieve serve apenas para forçar a primeira imagem da câmera a ser captura com um brilho relativamente melhor
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
+			videoCap.retrieve(frame);
 			// Com um laço de 30, será criada 30 quadros.
-			for (int i = 0; i < 10; i++) {
-				try {
+			for (int i = 0; i < 60; i++) {
+				//try {
 					frame = new Mat();
 					videoCap.retrieve(frame);
 					// Nomeia os 30 quadros de fotoX.jpg
-					Highgui.imwrite("video/" + "foto" + i + ".jpg", frame);
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
+					Highgui.imwrite("frames/" + "foto" + i + ".jpg", frame);
+					//Thread.sleep(100);
+				/*} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
-				System.out.println("ok");
+				}*/
+				System.out.println("Gerou imagem "+(i+1)+"/60");
 			}
+			
+			
 		}
-		
-		concatenar();
 	}
-	
-	
 
 	public void concatenar() {
 		Mat frame = new Mat();
-		VideoCapture videoCap = new VideoCapture();
+		VideoCapture videoCap = new VideoCapture("video/");
+		videoCap.retrieve(frame);
+		Highgui.imwrite("video/", frame);
 		
-		videoCap.open("video/foto0.jpg,video/foto1.jpg,video/foto2.jpg,video/foto3.jpg,video/foto4.jpg,video/foto5.jpg");
-		System.out.println(videoCap.set(5, 32));
+		
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
+		System.out.println("Capturando imagens!");
+		Thread.sleep(1000);
 		new AbriVideo();
+		
+		System.out.println("Aguarde: Iniciando geração das 59 imagens!");
+		Thread.sleep(500);
+		System.out.println("Gerando novas imagens em /NovosFrames");
+		Thread.sleep(1000);
+		new GerarNovosFrames(60, "frames");
+		
+		System.out.println("Aguarde: Iniciando processamento das novas imagens para geração dos dados estatísticos");
+		Thread.sleep(1000);
+		new AnalisaNovosFrames(59, "NovosFrames");
+		
+		Thread.sleep(1000);
+		
+		System.out.println("Geração de gráfico ainda não implementado. Finalizando execução.");
+		Thread.sleep(1000);
+		System.out.println("Execução finalizada");
+		System.exit(0);
 	}
 }
