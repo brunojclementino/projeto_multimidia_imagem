@@ -26,22 +26,14 @@ public class AbriVideo {
 
 			Mat frame;
 			frame = new Mat();
-			//Essa sequência de retrieve serve apenas para forçar a primeira imagem da câmera a ser captura com um brilho relativamente melhor
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
-			videoCap.retrieve(frame);
+			
+			int cont=0;//Esse loop serve para demorar um tempinho para capturar a primeira imagem
+			while(true){
+				if(cont>20)
+					break;
+				videoCap.retrieve(frame);
+				cont++;
+			}
 			// Com um laço de 30, será criada 30 quadros.
 			for (int i = 0; i < 60; i++) {
 				//try {

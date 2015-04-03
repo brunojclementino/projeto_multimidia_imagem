@@ -1,6 +1,8 @@
 package view.video;
 
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.Size;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
 import org.opencv.video.Video;
@@ -14,13 +16,13 @@ public class ProcessarVideo {
 		System.loadLibrary("opencv_java2410");
 		
 		VideoCapture video = new VideoCapture();
-		Mat quadro = new Mat();
+		Mat quadro = new Mat(360,640, CvType.CV_8UC1);
 		Mat frame = new Mat();
 		
 		video.open(caminhoVideo);
 		System.out.println(video.isOpened());
-		
-		System.out.println(video.retrieve(frame));
+	
+		video.read(quadro);
 		
 		
 		
@@ -43,7 +45,7 @@ public class ProcessarVideo {
 	
 	
 	public static void main(String[] args) {
-		//new ProcessarVideo("video/vid.avi");
+		new ProcessarVideo("Video.avi");
 		
 	}
 	

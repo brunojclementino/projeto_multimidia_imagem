@@ -23,11 +23,11 @@ public class Cam {
 		Mat frame = new Mat();
 		int cont=0;
 		while(true){
-			if(cont>1000)
+			if(cont>20)
 				break;
+			videoCapture.retrieve(frame);
 			cont++;
 		}
-		videoCapture.retrieve(frame);
 		
 		Highgui.imwrite("tratamentoDeImagens/"+"foto1.jpg", frame);
 		

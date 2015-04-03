@@ -57,12 +57,12 @@ public class GeraImagem {
 		
 		Highgui.imwrite("tratamentoDeImagens/foto3.jpg", frame3);
 		
-		File file = new File("foto3.jpg");
+		/*File file = new File("foto3.jpg");
 		if (file.length() != 0) {
 			JOptionPane.showMessageDialog(null, "Imagem gerada com sucesso!");	
 		} else {
 			System.out.println(frame1.size());
 			JOptionPane.showMessageDialog(null, "Houve algum erro, tente mais tarde.");
-		}
+		}*/
 	}
 }
