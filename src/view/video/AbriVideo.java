@@ -63,7 +63,7 @@ public class AbriVideo {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		System.out.println("Capturando imagens!");
+		/*System.out.println("Capturando imagens!");
 		Thread.sleep(1000);
 		new AbriVideo();
 		
@@ -82,6 +82,6 @@ public class AbriVideo {
 		System.out.println("Geração de gráfico ainda não implementado. Finalizando execução.");
 		Thread.sleep(1000);
 		System.out.println("Execução finalizada");
-		System.exit(0);
+		System.exit(0);*/
 	}
 }
