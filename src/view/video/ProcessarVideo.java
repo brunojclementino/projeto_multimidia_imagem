@@ -32,8 +32,8 @@ public class ProcessarVideo {
 	}
 
 	public static void main(String[] args) throws Exception {
-		/*new ProcessarVideo("SAMPLE.AVI");
-		new GerarNovosFrames(42, "frames");*/
+		new ProcessarVideo("SAMPLE.AVI");
+		new GerarNovosFrames(42, "frames");
 		new AnalisaNovosFrames(41, "NovosFrames");
 	}
 }
