@@ -1,15 +1,10 @@
 package view.video;
 
-import java.io.File;
-
 import javax.swing.JOptionPane;
 
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
-
-import view.processamento_de_video.AnalisaNovosFrames;
-import view.processamento_de_video.GerarNovosFrames;
 
 public class AbriVideo {
 

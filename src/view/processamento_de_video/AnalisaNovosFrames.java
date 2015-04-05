@@ -1,7 +1,5 @@
 package view.processamento_de_video;
 
-import java.awt.Color;
-
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 
