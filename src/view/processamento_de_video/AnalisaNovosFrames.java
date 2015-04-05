@@ -40,7 +40,7 @@ public class AnalisaNovosFrames {
 			System.out.println("Processou imagem "+i+" de "+qtdImagens);
 		}
 		
-		//new GerarGrafico(dadosImagens);
+		new GerarGrafico(dadosImagens, frame.size(), qtdImagens);
 		
 	}
 }
