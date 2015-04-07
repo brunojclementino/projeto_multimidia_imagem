@@ -8,7 +8,7 @@ import org.opencv.highgui.Highgui;
 public class GerarGrafico {
 
 	Size resolucao;
-	public GerarGrafico(int[][] dados, Size resolucao, int qtdImagens) {
+	public GerarGrafico(int[][] dados, Size resolucao, int qtdImagens, String caminhoSalvarGrafico) {
 		this.resolucao = resolucao;
 		System.loadLibrary("opencv_java2410");
 		int aux = qtdImagens*15;
@@ -39,7 +39,8 @@ public class GerarGrafico {
 			
 			for(int j=0;j<4;j++){//Para que as colunas dos gráficos tenham 7 pixels de largura
 				
-				for(int k=0; k<probabilidade(dados[i][0])*10;k++){
+				for(int k=0; k<probabilidade(dados[i][0])*10;k++){/*A multiplicação por 10 serve para aumentar o tamanho
+				 													em comprimento das barras do gráfico*/
 					graficoRGB.put(i*distColum+j, k, corR);
 					graficoR.put(i*distColum+j, k, corR);
 				}
@@ -54,15 +55,12 @@ public class GerarGrafico {
 					graficoB.put(i*distColum+8+j, k, corB);
 				}
 			}
-			
-			
-			
 		}
 		
-		Highgui.imwrite("graficos/graficoR.jpg", graficoR);
-		Highgui.imwrite("graficos/graficoG.jpg", graficoG);
-		Highgui.imwrite("graficos/graficoB.jpg", graficoB);
-		Highgui.imwrite("graficos/graficoRGB.jpg", graficoRGB);
+		Highgui.imwrite(caminhoSalvarGrafico + "/graficoR.jpg", graficoR);
+		Highgui.imwrite(caminhoSalvarGrafico + "/graficoG.jpg", graficoG);
+		Highgui.imwrite(caminhoSalvarGrafico + "/graficoB.jpg", graficoB);
+		Highgui.imwrite(caminhoSalvarGrafico + "/graficoRGB.jpg", graficoRGB);
 		
 		
 	}

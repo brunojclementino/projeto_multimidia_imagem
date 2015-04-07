@@ -5,6 +5,7 @@ import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
 
 import view.processamento_de_video.AnalisaNovosFrames;
+import view.processamento_de_video.AnalisaNovosFramesCom4Pixels;
 import view.processamento_de_video.GerarNovosFrames;
 
 public class ProcessarVideo {
@@ -16,7 +17,6 @@ public class ProcessarVideo {
 		VideoCapture video = new VideoCapture(caminhoVideo);
 		Mat quadro = new Mat();
 
-		//Highgui.imwrite("frame.jpg", quadro);
 		video.read(quadro);
 		int i = 0;
 		while (i < 42) {
@@ -35,5 +35,6 @@ public class ProcessarVideo {
 		new ProcessarVideo("SAMPLE.AVI");
 		new GerarNovosFrames(42, "frames");
 		new AnalisaNovosFrames(41, "NovosFrames");
+		new AnalisaNovosFramesCom4Pixels(41, "NovosFrames");
 	}
 }
