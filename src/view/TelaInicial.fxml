@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.TelaInicialController">
+   <children>
+      <TabPane layoutX="153.0" layoutY="38.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Imagem">
+               <content>
+                  <BorderPane>
+                     <center>
+                        <SplitPane dividerPositions="0.33, 0.66" BorderPane.alignment="CENTER">
+                           <items>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <Pane fx:id="paneFoto1" prefHeight="200.0" />
+                                    <Separator prefWidth="200.0" />
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Foto 1" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" spacing="10.0">
+                                 <children>
+                                    <Pane fx:id="paneFoto2" prefHeight="200.0" />
+                                    <Separator prefWidth="200.0" />
+                                    <GridPane>
+                                       <children>
+                                          <Label text="Foto 2" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" spacing="10.0">
+                                 <children>
+                                    <Pane fx:id="paneFotoResultante" prefHeight="200.0" />
+                                    <Separator prefWidth="200.0" />
+                                    <GridPane>
+                                       <children>
+                                          <Label text="Foto Resultante" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </items>
+                        </SplitPane>
+                     </center>
+                     <top>
+                        <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                          <items>
+                            <Button fx:id="buttonCarregarImagens" mnemonicParsing="false" text="Carregar Imagens">
+                                 <graphic>
+                                    <ImageView fx:id="imageViewCarregarImagens" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                 </graphic></Button>
+                          </items>
+                        </ToolBar>
+                     </top>
+                  </BorderPane>
+               </content>
+            </Tab>
+          <Tab text="Vídeo">
+               <content>
+                  <BorderPane>
+                     <top>
+                        <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                          <items>
+                            <Button fx:id="buttonCarregarGraficos" mnemonicParsing="false" text="Carregar Gráficos">
+                                 <graphic>
+                                    <ImageView fx:id="imageViewCarregarGraficos" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                 </graphic></Button>
+                          </items>
+                        </ToolBar>
+                     </top>
+                     <center>
+                        <SplitPane dividerPositions="0.5" BorderPane.alignment="CENTER">
+                           <items>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <Pane fx:id="paneGraficoCom1Pixel" prefHeight="200.0" />
+                                    <Separator prefWidth="200.0" />
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Gráfico (Processamento com 1 Pixel)" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" spacing="10.0">
+                                 <children>
+                                    <Pane fx:id="paneGraficoCom4Pixel" prefHeight="200.0" />
+                                    <Separator prefWidth="200.0" />
+                                    <GridPane>
+                                       <children>
+                                          <Label text="Gráfico (Processamento com 4 Pixel)" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </items>
+                        </SplitPane>
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
